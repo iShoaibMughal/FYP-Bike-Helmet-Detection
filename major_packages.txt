@@ -1,0 +1,5 @@
+# Below is the list of the major packages needed for working in this project.
+ultralytics==8.1.8
+streamlit==1.30.0
+pillow==10.2.0
+pytube==15.0.0
