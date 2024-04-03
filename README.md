@@ -26,6 +26,7 @@ Bike-Helmet-Detectionv2
 ├── images
 │   ├── BikesHelmets6_detected.jpg
 │   └── BikesHelmets6.png
+├── local_requirements.txt
 ├── major_packages.txt
 ├── packages.txt
 ├── README.md
@@ -62,6 +63,8 @@ opencv-python==4.9.0.80
 opencv-python-headless==4.8.1.78
 opencv-contrib-python==4.8.1.78
 ```
+# Deployment Pipeline
+Continuous delivery is done by streamlit to host on Streamlit Cloud through this Github repository. 
 
 # Hosted on Streamlit:- 
 https://bike-helmet-detectionv2-dmehozp3lkef4wnssaepjf.streamlit.app/
