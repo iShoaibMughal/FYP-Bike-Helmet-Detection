@@ -18,14 +18,15 @@ ROOT = root_path.relative_to(Path.cwd())
 IMAGE = 'Image'
 VIDEO = 'Video'
 WEBCAM = 'Webcam'
+DEVICECAM = 'Devicecam'
 RTSP = 'RTSP'
 YOUTUBE = 'YouTube'
 
-SOURCES_LIST = [IMAGE, VIDEO, WEBCAM, RTSP, YOUTUBE]
+SOURCES_LIST = [IMAGE, VIDEO, WEBCAM, DEVICECAM, RTSP, YOUTUBE]
 
 # Images config
 IMAGES_DIR = ROOT / 'images'
-DEFAULT_IMAGE = IMAGES_DIR / 'BikesHelmets6.png'  # office_4.jpg
+DEFAULT_IMAGE = IMAGES_DIR / 'BikesHelmets6.png'
 DEFAULT_DETECT_IMAGE = IMAGES_DIR / 'BikesHelmets6_detected.jpg'
 
 # Videos config
