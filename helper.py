@@ -6,6 +6,10 @@ from pytube import YouTube
 
 import settings
 
+from streamlit_webrtc import webrtc_streamer, VideoProcessorBase, WebRtcMode
+import numpy as np
+from PIL import Image
+import av
 
 def load_model(model_path):
     """
@@ -229,3 +233,54 @@ def play_stored_video(conf, model):
                     break
         except Exception as e:
             st.sidebar.error("Error loading video: " + str(e))
+
+
+
+def device_camera(conf, model):
+    """
+    Plays any local device webcam stream. Detects Objects in real-time using the YOLO object detection model.
+
+    Parameters:
+    conf: Confidence of YOLOv8 model.
+    model: An instance of the `YOLOv8` class containing the YOLOv8 model.
+    
+    Returns:
+        None
+
+    Raises:
+        None
+    """
+    st.sidebar.title("Device camara Object Detection")
+    # model = YOLO("weights/best.pt")
+
+    def video_frame_callback(frame):
+        image = frame.to_ndarray(format="bgr24")
+
+        # flipped = image[::-1,:,:]
+        # Resize the image while maintaining the aspect ratio
+        input = np.asarray(Image.fromarray(image))
+        result = model.predict(input, conf=conf)
+        res_plotted = result[0].plot()
+        # return res_plotted
+        # result = model.predict(frame, stream=True, show=True)
+
+        return av.VideoFrame.from_ndarray(res_plotted, format="bgr24")
+
+
+    webrtc_streamer(key="example", 
+                    video_frame_callback=video_frame_callback,
+                    media_stream_constraints={"video": True, "audio": False},
+                    rtc_configuration={
+                        "iceServers": [
+                            {
+                                "urls": ["stun:stun.l.google.com:19302"]
+                             }]}
+                    )
+
+    # webrtc_streamer(
+    #     key="example",
+    #     # video_transformer_factory=lambda: MyVideoTransformer(conf, model),
+    #     # rtc_configuration={"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]},
+    #     media_stream_constraints={"video": True, "audio": False},
+    # )
+
