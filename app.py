@@ -100,6 +100,9 @@ elif source_radio == settings.VIDEO:
 elif source_radio == settings.WEBCAM:
     helper.play_webcam(confidence, model)
 
+elif source_radio == settings.DEVICECAM:
+    helper.device_camera(confidence, model)
+
 elif source_radio == settings.RTSP:
     helper.play_rtsp_stream(confidence, model)
 
