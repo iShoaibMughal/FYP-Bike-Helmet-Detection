@@ -1,5 +1,5 @@
 # Bike-Helmet-Detectionv2
-This repository contains the Bike Helmet detection using YOLOv8 in streamlit. This web application does processing on end users images and videos to detect **bike rider**, **helmet** and ***no helmet** and render processed images and videos to user.
+This repository contains the Bike Helmet detection using YOLOv8 in streamlit. This web application does processing on end users images and videos to detect **bike rider**, **helmet** and **no helmet** and render processed images and videos to user.
 
 # Major python libraries used for the project
 ```
